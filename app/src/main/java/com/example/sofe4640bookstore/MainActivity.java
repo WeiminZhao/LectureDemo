@@ -7,14 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-    MySQLiteHelper mySQLiteHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mySQLiteHelper = new MySQLiteHelper(this,null,null,1);
 
 
 

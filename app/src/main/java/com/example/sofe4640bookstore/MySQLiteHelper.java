@@ -48,26 +48,27 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         this.onCreate(sqLiteDatabase);
     }
 
-    public void addRecord(String firstName,
-                          String lastName,
-                          String username,
-                          String password,
-                          String email){
+    public boolean addRecord(Users users){
 
         ContentValues values= new ContentValues();
 
-        values.put(COL_2,firstName);
-        values.put(COL_3,lastName);
-        values.put(COL_4,username);
-        values.put(COL_5,password);
-        values.put(COL_6,email);
+        values.put(COL_2,users.getFirstName());
+        values.put(COL_3,users.getLastName());
+        values.put(COL_4,users.getUserName());
+        values.put(COL_5,users.getPassword());
+        values.put(COL_6,users.getEmail());
         values.put(COL_7,"1");
 
 
         SQLiteDatabase db = getWritableDatabase();
-        db.insert(TABLE_NAME,null,values);
-
+        long result = db.insert(TABLE_NAME,null,values);
         db.close();
+
+        if (result ==0) return false;
+        else
+            return true;
+
+
     }
 
 }
