@@ -2,9 +2,11 @@ package com.example.sofe4640bookstore;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 
@@ -49,16 +51,13 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     }
 
     public boolean addRecord(Users users){
-
         ContentValues values= new ContentValues();
-
         values.put(COL_2,users.getFirstName());
         values.put(COL_3,users.getLastName());
         values.put(COL_4,users.getUserName());
         values.put(COL_5,users.getPassword());
         values.put(COL_6,users.getEmail());
         values.put(COL_7,"1");
-
 
         SQLiteDatabase db = getWritableDatabase();
         long result = db.insert(TABLE_NAME,null,values);
@@ -67,8 +66,21 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         if (result ==0) return false;
         else
             return true;
-
-
     }
 
+
+    public boolean checkUsers(String userNameStr, String passwordStr) {
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "select * from " + TABLE_NAME
+                       + " where " + COL_4 + " = " + "'" +userNameStr + "'" +
+                          " and " +  COL_5 + " = " + "'" +passwordStr+"'" +" ; ";
+
+        Log.d("query",query);
+        Cursor c = db.rawQuery(query,null);
+        int rowsCount= c.getCount();
+        c.close();
+        if (rowsCount>0) return true;
+        else return false;
+
+    }
 }

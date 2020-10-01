@@ -68,12 +68,12 @@
 
 
     <Button
-        android:id="@+id/btnActivity2"
+        android:id="@+id/btnCheckUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/lblPassword"
         android:layout_marginLeft="@dimen/padding_left"
-        android:onClick="onClickActivity2"
+        android:onClick="checkExistingUser"
         android:text="Login" />
 
     <EditText
@@ -93,7 +93,7 @@
         android:layout_below="@+id/lblPassword"
         android:layout_marginLeft="23dp"
         android:layout_marginTop="16dp"
-        android:layout_toRightOf="@id/btnActivity2"
+        android:layout_toRightOf="@id/btnCheckUser"
         android:clickable="true"
         android:onClick="signup"
         android:ems="10"
