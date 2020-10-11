@@ -17,7 +17,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("step1","step1");
-        mydb = new MySQLiteHelper(this,null,null,1);
+        mydb = new MySQLiteHelper(this,null,null,2);
+
+
         Log.d("step2","step2");
 
     }
